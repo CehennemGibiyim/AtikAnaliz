@@ -1,3 +1,8 @@
+ Nasıl Çalıştırırsın?
+ZIP'i aç → BASLAT.bat'ı çift tıkla → Menü açılır, ne istersen seç:
+SeçenekSüreNe Gerekiyor🌐 Web (tarayıcı)2 dkSadece Node.js🖥️ Windows EXE8 dkSadece Node.js📱 Android APK20 dkNode.js + JDK 17 + Android Studio
+
+
 # 🦅 AtikAnaliz — Hızla Analiz Et, Akılla Kazan
 
 <div align="center">
