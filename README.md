@@ -1,6 +1,7 @@
  Nasıl Çalıştırırsın?
 ZIP'i aç → BASLAT.bat'ı çift tıkla → Menü açılır, ne istersen seç:
 SeçenekSüreNe Gerekiyor🌐 Web (tarayıcı)2 dkSadece Node.js🖥️ Windows EXE8 dkSadece Node.js📱 Android APK20 dkNode.js + JDK 17 + Android Studio
+Node.js (tek kurulum): → nodejs.org → LTS indir ve kur → Sonra BASLAT.bat çalıştır, gerisini o halleder.
 
 
 # 🦅 AtikAnaliz — Hızla Analiz Et, Akılla Kazan
