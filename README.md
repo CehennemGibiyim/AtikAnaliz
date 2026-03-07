@@ -2,7 +2,208 @@
 ZIP'i aç → BASLAT.bat'ı çift tıkla → Menü açılır, ne istersen seç:
 SeçenekSüreNe Gerekiyor🌐 Web (tarayıcı)2 dkSadece Node.js🖥️ Windows EXE8 dkSadece Node.js📱 Android APK20 dkNode.js + JDK 17 + Android Studio
 Node.js (tek kurulum): → nodejs.org → LTS indir ve kur → Sonra BASLAT.bat çalıştır, gerisini o halleder.
+# 🦅 ATİKANALİZ — KURULUM REHBERİ
+## Windows EXE + Android APK + Web (Tarayıcı)
 
+---
+
+## 📋 ÖNCE BUNLARI HAZIRLA (Tek seferlik)
+
+### 1️⃣ Node.js Kur (ZORUNLU — tüm platformlar için)
+→ https://nodejs.org → "LTS" sürümünü indir ve kur
+→ Kurulum sonrası kontrol: `node -v` ve `npm -v` yaz, versiyon görünmeli
+
+### 2️⃣ Proje klasörünü oluştur
+```
+C:\AtikAnaliz\   ← bu klasörü oluştur
+```
+Bu repo içindeki TÜM dosyaları bu klasöre koy.
+
+---
+
+## 🌐 A) WEB TARAYICI (En hızlı — 5 dakika)
+
+Windows + Android + iOS'ta çalışır (aynı WiFi'deyseniz)
+
+```cmd
+cd C:\AtikAnaliz
+npm install
+npm start
+```
+
+→ Tarayıcı otomatik açılır: http://localhost:3000
+→ Telefondan erişmek için: http://[BİLGİSAYARIN-IP]:3000
+   (IP öğrenmek için: cmd → ipconfig → IPv4 adresi)
+
+---
+
+## 🖥️ B) WINDOWS EXE KURULUMU
+
+### Adım 1 — Bağımlılıkları yükle
+```cmd
+cd C:\AtikAnaliz
+npm install
+```
+
+### Adım 2 — React uygulamasını derle
+```cmd
+npm run build
+```
+(2-3 dakika sürer, "build" klasörü oluşur)
+
+### Adım 3 — EXE paketi oluştur
+```cmd
+npm run electron:build
+```
+(3-5 dakika sürer)
+
+### Adım 4 — Kurulum dosyasını bul
+```
+C:\AtikAnaliz\dist-electron\AtikAnaliz Setup 2.0.0.exe
+```
+→ Bu dosyayı çalıştır → "AtikAnaliz Kurulum Sihirbazı" açılır
+→ İleri → Klasör seç → Kur → Masa üstü kısayolu oluşturulur ✅
+
+### Geliştirme modunda çalıştırma (hot-reload ile):
+```cmd
+npm run electron:dev
+```
+
+---
+
+## 📱 C) ANDROID APK KURULUMU
+
+### Ek Gereksinimler:
+- Java JDK 17: https://adoptium.net → "Temurin 17" indir ve kur
+- Android Studio: https://developer.android.com/studio → indir ve kur
+  (Kurulum sırasında "Android SDK" seçili olsun)
+
+### Adım 1 — Bağımlılıkları yükle
+```cmd
+cd C:\AtikAnaliz
+npm install
+```
+
+### Adım 2 — React uygulamasını derle
+```cmd
+npm run build
+```
+
+### Adım 3 — Android projesini başlat (İLK KEZ çalıştırıyorsan)
+```cmd
+npm run android:init
+```
+
+### Adım 4 — Android'e senkronize et
+```cmd
+npm run android:sync
+```
+
+### Adım 5 — Android Studio'yu aç
+```cmd
+npm run android:open
+```
+→ Android Studio açılır, proje yüklenir (1-2 dakika bekle)
+
+### Adım 6 — APK derle (Android Studio'da)
+→ Üst menü: Build → Build Bundle(s)/APK(s) → Build APK(s)
+→ Tamamlanınca "locate" linkine tıkla
+→ APK dosyası: `android\app\build\outputs\apk\debug\app-debug.apk`
+
+### Adım 7 — Telefona yükle
+Seçenek A — USB ile:
+```
+Telefonu USB ile bağla → Dosyayı sürükle/bırak → Telefondan aç
+```
+Seçenek B — Komut satırıyla (ADB):
+```cmd
+adb install android\app\build\outputs\apk\debug\app-debug.apk
+```
+
+### ⚡ Hızlı APK (Gradle ile, Android Studio olmadan):
+```cmd
+npm run android:build
+```
+APK: `android\app\build\outputs\apk\debug\app-debug.apk`
+
+---
+
+## 🔧 SORUN GİDERME
+
+### "npm not found" hatası
+→ Node.js kurulu değil: nodejs.org'dan kur
+
+### "JAVA_HOME not set" hatası (Android için)
+→ JDK 17'yi kur
+→ Sistem değişkeni ekle:
+  - Denetim Masası → Sistem → Gelişmiş Sistem Ayarları → Ortam Değişkenleri
+  - Yeni: JAVA_HOME = C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot
+
+### "SDK location not found" hatası (Android için)
+→ Android Studio kur
+→ local.properties dosyasını düzenle:
+  `android\local.properties` → `sdk.dir=C:\\Users\\[KULLANICI]\\AppData\\Local\\Android\\Sdk`
+
+### Port 3000 meşgul hatası
+```cmd
+npx kill-port 3000
+npm start
+```
+
+### Electron penceresi açılmıyor
+```cmd
+npm run build
+npm run electron:build
+```
+→ dist-electron klasöründeki .exe'yi çalıştır
+
+---
+
+## 📁 DOSYA YAPISI
+
+```
+C:\AtikAnaliz\
+├── src\
+│   ├── AtikAnaliz.jsx    ← Ana uygulama (güncellendi v2.0)
+│   └── index.js          ← React giriş noktası
+├── public\
+│   └── index.html        ← HTML şablonu
+├── electron\
+│   ├── main.js           ← Electron ana süreç
+│   └── preload.js        ← Güvenli köprü
+├── package.json          ← Proje yapılandırması
+├── capacitor.config.ts   ← Android yapılandırması
+└── KURULUM.md            ← Bu dosya
+```
+
+---
+
+## 📲 MOBİL WEB UYGULAMASI (APK olmadan)
+
+Eğer APK derlemek istemiyorsan, web versiyonunu telefona ana ekrana ekleyebilirsin:
+
+1. `npm start` ile uygulamayı çalıştır
+2. Bilgisayarın IP adresini öğren (cmd → ipconfig)
+3. Telefonda Chrome/Safari'de `http://192.168.x.x:3000` aç
+4. Sağ üst → "Ana Ekrana Ekle" → Uygulama gibi görünür ✅
+
+---
+
+## 🆕 V2.0 YENİLİKLER
+
+✅ Sinyaller sayfasında her coin kartında **interval** ve **indikatör** rozeti gösterimi
+✅ Ana sayfadaki tarama paneli tamamen yeniden tasarlandı
+✅ Sinyal listesinde güven çubuğu (progress bar) eklendi
+✅ TP/SL değerleri sinyal kartlarında da görünüyor
+✅ Aktif tarama bilgisi sinyal sayfasında banner olarak gösteriliyor
+✅ Tüm kart animasyonları ve hover efektleri iyileştirildi
+✅ Buton aktif/glow efektleri eklendi
+
+---
+
+*AtikAnaliz v2.0 — Hızla Analiz Et, Akılla Kazan 🦅*
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 # 🦅 AtikAnaliz — Hızla Analiz Et, Akılla Kazan
 
