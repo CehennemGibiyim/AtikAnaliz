@@ -1,0 +1,5 @@
+package com.atikanaliz.app;
+
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {}

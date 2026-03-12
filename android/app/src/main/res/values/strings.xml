@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AtikAnaliz</string>
+    <string name="title_activity_main">AtikAnaliz</string>
+    <string name="package_name">com.atikanaliz.app</string>
+    <string name="custom_url_scheme">com.atikanaliz.app</string>
+</resources>

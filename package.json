@@ -1,0 +1,87 @@
+{
+  "name": "atik-analiz",
+  "version": "2.0.0",
+  "description": "AtikAnaliz - Kripto Sinyal ve Analiz Uygulaması",
+  "author": "AtikAnaliz",
+  "private": true,
+  "homepage": "https://cehennemgibiyim.github.io/AtikViewer",
+  "main": "public/electron.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "electron:dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "npm run build && electron-builder --win --publish never",
+    "android:init": "npx cap add android",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:open": "npx cap open android",
+    "android:build": "npm run build && npx cap sync android && cd android && gradlew assembleDebug",
+    "ios:init": "npx cap add ios",
+    "ios:sync": "npm run build && npx cap sync ios",
+    "ios:open": "npx cap open ios",
+    "ios:build": "npm run build && npx cap sync ios && xcodebuild -workspace ios/App.xcworkspace -scheme App -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 15'"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.7.0",
+    "@capacitor/app": "^5.0.7",
+    "@capacitor/core": "^5.7.0",
+    "@capacitor/haptics": "^5.0.7",
+    "@capacitor/ios": "^5.7.0",
+    "@capacitor/status-bar": "^5.0.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.atikanaliz.app",
+    "productName": "AtikAnaliz",
+    "copyright": "Copyright 2024 AtikAnaliz",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "build/**/*",
+      "public/electron.js",
+      "public/preload.js",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "language": "1055"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
