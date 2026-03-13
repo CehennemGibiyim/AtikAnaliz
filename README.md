@@ -47,6 +47,7 @@ npm run build
 ```cmd
 # package.json dosyasına ekle:
 "homepage": "https://cehennemgibiyim.github.io/AtikAnaliz"
+"ReadmePage":   "https://cehennemgibiyim.github.io/AtikAnaliz/Atik-Analiz.html"
 ```
 
 ### Adım 3 — Build'i GitHub'a yükle
