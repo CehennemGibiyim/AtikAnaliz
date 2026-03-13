@@ -46,7 +46,7 @@ npm run build
 ### Adım 2 — GitHub Pages için homepage ekle
 ```cmd
 # package.json dosyasına ekle:
-"homepage": "https://cehennemgibiyim.github.io/AtikViewer"
+"homepage": "https://cehennemgibiyim.github.io/AtikAnaliz"
 ```
 
 ### Adım 3 — Build'i GitHub'a yükle
@@ -57,10 +57,10 @@ git push origin main
 ```
 
 ### Adım 4 — GitHub Pages aktifleştir
-1. GitHub reposunu aç: https://github.com/CehennemGibiyim/AtikViewer
+1. GitHub reposunu aç: https://github.com/CehennemGibiyim/AtikAnaliz
 2. Settings → Pages → Source: "Deploy from a branch"
 3. Branch: "main" + "/ (root)" → Save
-4. 2-3 dakika sonra site aktif: https://cehennemgibiyim.github.io/AtikViewer
+4. 2-3 dakika sonra site aktif: https://cehennemgibiyim.github.io/AtikAnaliz
 
 ---
 
@@ -304,7 +304,7 @@ Eğer APK derlemek istemiyorsan, web versiyonunu telefona ana ekrana ekleyebilir
 
 ### ✅ HAZIR OLANLAR:
 - **Local Web**: `npm start` → http://localhost:3000
-- **GitHub Pages**: https://cehennemgibiyim.github.io/AtikViewer
+- **GitHub Pages**: https://cehennemgibiyim.github.io/AtikAnaliz
 - **Web Build**: `build/` klasörü hazır
 - **iOS Project**: Xcode'de hazır
 - **Android Project**: Gradle ile hazır
