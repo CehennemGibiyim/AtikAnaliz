@@ -4,7 +4,7 @@
   "description": "AtikAnaliz - Kripto Sinyal ve Analiz Uygulaması",
   "author": "AtikAnaliz",
   "private": true,
-  "homepage": "https://cehennemgibiyim.github.io/AtikViewer",
+  "homepage": "https://cehennemgibiyim.github.io/AtikAnaliz",
   "main": "public/electron.js",
   "scripts": {
     "start": "react-scripts start",
