@@ -47,7 +47,6 @@ npm run build
 ```cmd
 # package.json dosyasına ekle:
 "homepage": "https://cehennemgibiyim.github.io/AtikAnaliz"
-"ReadmePage":   "https://cehennemgibiyim.github.io/AtikAnaliz/Atik-Analiz.html"
 ```
 
 ### Adım 3 — Build'i GitHub'a yükle
@@ -56,7 +55,7 @@ git add build/
 git commit -m "Add build files"
 git push origin main
 ```
-
+"ReadmePage":   " https://cehennemgibiyim.github.io/AtikAnaliz/Atik-Analiz.html "
 ### Adım 4 — GitHub Pages aktifleştir
 1. GitHub reposunu aç: https://github.com/CehennemGibiyim/AtikAnaliz
 2. Settings → Pages → Source: "Deploy from a branch"
